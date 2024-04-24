@@ -3,6 +3,7 @@ from rest_framework import serializers
 from movies.models import Movie
 from genres.serializers import GenreSerializer
 from actors.serializers import ActorSerializer
+from reviews.serializers import ReviewSerializer 
 
 
 class MovieModelSerializer(serializers.ModelSerializer):
@@ -35,7 +36,9 @@ class MovieListDetailSerializer(serializers.ModelSerializer):
     actors = ActorSerializer(many=True)
     genre = GenreSerializer()
     rate = serializers.SerializerMethodField(read_only=True)  # Campo calculado. Um campo que é só para ser lido e não tem no DB, só na resposta.
-    
+    reviews = ReviewSerializer(many=True)  # Inclua o serializer da avaliação
+
+    movie_title = serializers.CharField(source='title', read_only=True)
 
     class Meta:
         model = Movie
