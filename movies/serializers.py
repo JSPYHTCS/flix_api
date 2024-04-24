@@ -35,7 +35,7 @@ class MovieListDetailSerializer(serializers.ModelSerializer):
     actors = ActorSerializer(many=True)
     genre = GenreSerializer()
     rate = serializers.SerializerMethodField(read_only=True)  # Campo calculado. Um campo que é só para ser lido e não tem no DB, só na resposta.
-   
+    
 
     class Meta:
         model = Movie
