@@ -3,8 +3,9 @@ from reviews.models import Review
 
 
 class ReviewSerializer(serializers.ModelSerializer):
+    movie_title = serializers.ReadOnlyField(source='movie.title')
 
     class Meta:
         model = Review
-        fields = '__all__'
+        exclude = ['movie']
 
