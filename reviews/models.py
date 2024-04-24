@@ -13,9 +13,6 @@ class Review(models.Model):
     )
     comment = models.TextField(null=True, blank=True)
 
-    @property
-    def title(self):
-        return self.movie.title
     
     def __str__(self):
         return f"{self.movie.title}"

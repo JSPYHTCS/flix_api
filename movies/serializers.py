@@ -35,10 +35,11 @@ class MovieListDetailSerializer(serializers.ModelSerializer):
     actors = ActorSerializer(many=True)
     genre = GenreSerializer()
     rate = serializers.SerializerMethodField(read_only=True)  # Campo calculado. Um campo que é só para ser lido e não tem no DB, só na resposta.
+    movie_title = serializers.CharField(source='title', read_only=True)
 
     class Meta:
         model = Movie
-        fields = ['id', 'title', 'genre', 'actors', 'release_date', 'rate', 'resume']
+        fields = ['id', 'movie_title' 'title', 'genre', 'actors', 'release_date', 'rate', 'resume']
 
     def get_rate(self, obj):
         rate = obj.reviews.aggregate(Avg('stars'))['stars__avg']
