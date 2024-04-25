@@ -6,7 +6,6 @@ from actors.serializers import ActorSerializer
 
 
 class MovieModelSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = Movie
         fields = '__all__'

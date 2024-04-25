@@ -3,7 +3,7 @@ from reviews.models import Review
 
 
 class ReviewSerializer(serializers.ModelSerializer):
-    movie = serializers.CharField(source='movie.title')
+    title = serializers.ReadOnlyField(source='movie.title')
 
     class Meta:
         model = Review
