@@ -8,7 +8,7 @@ class ReviewSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Review
-        fields = '__all__'
+        fields = ['id', 'title', 'stars', 'comment']
     
     def get_title(self, obj):
         title = obj.movie.title
